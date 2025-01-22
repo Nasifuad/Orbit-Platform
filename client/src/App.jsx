@@ -1,5 +1,8 @@
+import { RouterProvider } from "react-router-dom";
+import router from "./router/root";
+
 const App = () => {
-  return <div className="text-blue-500">hello orbit</div>;
+  return <RouterProvider router={router} />;
 };
 
 export default App;

@@ -41,8 +41,8 @@ export const navLinks = [
     icon: <LuAlignVerticalJustifyCenter />,
   },
   {
-    to: "/profile",
-    name: "Profile",
+    to: "/community",
+    name: "Community",
     icon: <MdGroup />,
   },
   {

@@ -4,7 +4,7 @@ import logo from "../assets/images/orbit.svg";
 const Navbar = () => {
   return (
     <>
-      <div className="flex flex-col gap-3 justify-center mt-2">
+      <div className="flex flex-col gap-3 justify-center mt-2 border">
         <NavLink to="/">
           {" "}
           <img src={logo} alt="logo" className="w-[100px] h-[100px]" />

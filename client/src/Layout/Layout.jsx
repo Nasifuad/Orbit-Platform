@@ -1,8 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../sections/Navbar";
 import Aside from "../sections/Aside";
-import MiniNav from "../components/MiniNav";
-import Post from "../components/Post";
 
 const Layout = () => {
   return (
@@ -10,8 +8,6 @@ const Layout = () => {
       <div className="container mx-auto  flex justify-between items-start ">
         <Navbar />
         <div className="flex flex-col border-[#2c2f33] border-[0.5px] h-screen gap-3 w-full  ">
-          <MiniNav />
-          <Post />
           <Outlet />
         </div>
         <Aside />

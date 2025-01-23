@@ -61,3 +61,36 @@ export const navLinks = [
     icon: <CiSettings />,
   },
 ];
+
+export const miniNavHome = [
+  {
+    to: "/",
+    name: "For you",
+  },
+  {
+    to: "/following",
+    name: "Following",
+  },
+  {
+    to: "/communities",
+    name: "Communities",
+  },
+];
+export const miniNavSerach = [
+  {
+    to: "/news",
+    name: "News",
+  },
+  {
+    to: "/trending",
+    name: "Trending",
+  },
+  {
+    to: "/sports",
+    name: "Sports",
+  },
+  {
+    to: "/entertainment",
+    name: "Entertainment",
+  },
+];

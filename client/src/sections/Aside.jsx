@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 const Aside = () => {
   return (
     <>
-      <div className="xl:flex flex-col gap-3 ml-auto hidden md:flex md:w-1/3  ">
+      <div className="xl:flex flex-col gap-3 ml-auto hidden  p-2">
         <form>
           <div className=" border-[#2c2f33] border-[0.5px] rounded-full flex  xl:w-full relative">
             <CiSearch className="ml-2 text-3xl text-white z-20 absolute top-2 right-2" />

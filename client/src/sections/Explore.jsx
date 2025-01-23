@@ -1,5 +1,11 @@
+import MiniNav from "@/components/MiniNav";
+import { miniNavSerach } from "@/constants/constants";
 const Explore = () => {
-  return <div className="w-1/3 bg-slate-300 h-screen">Explore</div>;
+  return (
+    <>
+      <MiniNav nav={miniNavSerach} />
+    </>
+  );
 };
 
 export default Explore;

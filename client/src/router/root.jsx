@@ -14,11 +14,16 @@ import Lists from "../sections/Lists";
 import More from "../sections/More";
 import Community from "../sections/Community";
 import Settings from "../sections/Settings";
+import Home from "../sections/Home/Home";
+import Following from "@/sections/Following";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route index element={<Content />} />
+      <Route path="home" element={<Home />}>
+        <Route path="you" element={<Content />} />
+        <Route path="following" element={<Following />} />
+      </Route>
       <Route path="/search" element={<Explore />} />
       <Route path="/notifications" element={<Notifications />} />
       <Route path="/messages" element={<Messages />} />

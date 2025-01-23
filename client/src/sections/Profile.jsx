@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import cover from "../assets/images/cover.jpeg";
 import { MdVerified } from "react-icons/md";
+import { miniNavProfile } from "@/constants/constants";
+import MiniNav from "@/components/MiniNav";
 const Profile = () => {
   return (
     <>
@@ -21,7 +23,7 @@ const Profile = () => {
               <p className="text-white text-xl font-bold">Nasif Fuad</p>
               <div className="px-2 flex justify-center items-center gap-2 border rounded-full">
                 <MdVerified className="text-blue-600" />
-                <p className="text-white">Get Verified</p>
+                <p className="text-white hidden  xl:flex">Get Verified</p>
               </div>
             </div>
           </div>
@@ -41,6 +43,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <MiniNav nav={miniNavProfile} />
     </>
   );
 };

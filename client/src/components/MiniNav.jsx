@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const MiniNav = ({ nav }) => {
   return (
     <>
-      <div className="flex gap-4 items-center bg-transparent backdrop-blur-md p-6 text-white text-xl justify-between sticky top-0 z-50 w-full border-[#2c2f33] border-b-[0.5px]">
+      <div className="flex gap-4 items-center bg-transparent backdrop-blur-md p-6 text-white text-xl justify-between sticky top-0 z-50 w-full border-[#2c2f33] border-b-[0.5px] flex-wrap">
         {nav.map((link) => {
           return (
             <NavLink
@@ -21,7 +21,6 @@ const MiniNav = ({ nav }) => {
           );
         })}
       </div>
-      );
     </>
   );
 };

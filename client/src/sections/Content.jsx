@@ -6,7 +6,7 @@ import { miniNavHome } from "@/constants/constants";
 const Content = () => {
   return (
     <>
-      <MiniNav nav={miniNavHome} />
+      {/* <MiniNav nav={miniNavHome} /> */}
       <Post />
       <SkeletonUI />
     </>

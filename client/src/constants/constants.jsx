@@ -11,7 +11,7 @@ import { CiSettings } from "react-icons/ci";
 
 export const navLinks = [
   {
-    to: "/",
+    to: "/home",
     name: "Home",
     icon: <FiHome />,
   },
@@ -64,15 +64,15 @@ export const navLinks = [
 
 export const miniNavHome = [
   {
-    to: "/",
+    to: "you",
     name: "For you",
   },
   {
-    to: "/following",
+    to: "following",
     name: "Following",
   },
   {
-    to: "/communities",
+    to: "communities",
     name: "Communities",
   },
 ];
@@ -117,5 +117,32 @@ export const miniNavCommunities = [
   {
     to: "/Explore",
     name: "Explore",
+  },
+];
+
+export const miniNavProfile = [
+  {
+    to: "/",
+    name: "Posts",
+  },
+  {
+    to: "/replies",
+    name: "Replies",
+  },
+  {
+    to: "/likes",
+    name: "Likes",
+  },
+  {
+    to: "/highlights",
+    name: "Highlights",
+  },
+  {
+    to: "/articles",
+    name: "Articles",
+  },
+  {
+    to: "/media",
+    name: "Media",
   },
 ];

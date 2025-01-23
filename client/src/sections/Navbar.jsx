@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <>
       <div className="flex flex-col gap-3 h-screen p-4">
-        <NavLink to="/">
+        <NavLink to="/home/you">
           {" "}
           <img
             src={logo}
@@ -18,7 +18,10 @@ const Navbar = () => {
             const { to, name, icon } = link;
             return (
               <>
-                <div className=" px-5 py-2 rounded-full flex gap-4 hover:bg-[#2c2f33] transition duration-300 w-max justify-start items-start">
+                <div
+                  className=" px-5 py-2 rounded-full flex gap-4 hover:bg-[#2c2f33] transition duration-300 w-max justify-start items-start"
+                  key={name}
+                >
                   <NavLink
                     to={to}
                     className={({ isActive }) =>

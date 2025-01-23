@@ -108,3 +108,14 @@ export const miniNavNotifications = [
     name: "Replies",
   },
 ];
+
+export const miniNavCommunities = [
+  {
+    to: "/home",
+    name: "Home",
+  },
+  {
+    to: "/Explore",
+    name: "Explore",
+  },
+];

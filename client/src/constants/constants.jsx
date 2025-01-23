@@ -94,3 +94,17 @@ export const miniNavSerach = [
     name: "Entertainment",
   },
 ];
+export const miniNavNotifications = [
+  {
+    to: "/all",
+    name: "All",
+  },
+  {
+    to: "/mentions",
+    name: "Mentions",
+  },
+  {
+    to: "/replies",
+    name: "Replies",
+  },
+];

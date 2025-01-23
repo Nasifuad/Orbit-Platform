@@ -12,8 +12,8 @@ const MiniNav = ({ nav }) => {
               to={link.to}
               className={({ isActive }) =>
                 isActive
-                  ? "border-b-2 border-blue-500 after:content-['_']"
-                  : "text-gray-400"
+                  ? "border-b-2 border-blue-500 "
+                  : "text-gray-400 hover:bg-slate-800 hover:text-white px-6 py-2 rounded-full"
               }
             >
               {link.name}

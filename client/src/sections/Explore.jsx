@@ -4,6 +4,7 @@ import { CiSearch } from "react-icons/ci";
 //import settings icon
 import { CiSettings } from "react-icons/ci";
 import { miniNavSerach } from "@/constants/constants";
+import SkeletonUI from "@/components/skeletonUi";
 const Explore = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const Explore = () => {
         <CiSettings className="text-white text-2xl" />
       </div>
       <MiniNav nav={miniNavSerach} />
+      <SkeletonUI />
     </>
   );
 };

@@ -4,12 +4,12 @@ import { Button } from "./ui/button";
 const SignUp = ({ setToggle }) => {
   return (
     <div className="w-full h-screen bg-black/20 fixed top-0 left-0 z-50">
-      <div className="bg-black shadow-white shadow-2xl rounded-2xl  w-[400px]  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 relative z-50 p-10 flex flex-col gap-4 ">
+      <div className="bg-black shadow-white shadow rounded-2xl  w-[400px]  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 relative z-50 p-10 flex flex-col gap-6 ">
         <RxCross1
           className="text-white text-2xl absolute top-3 right-3"
           onClick={() => setToggle(false)}
         />
-        <h1 className="text-white text-2xl text-center">Create your account</h1>
+        <h1 className="text-white text-3xl text-center">Create your account</h1>
         <input
           type="text"
           placeholder="Name"

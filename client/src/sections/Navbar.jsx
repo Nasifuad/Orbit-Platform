@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import logo from "../assets/images/orbit.svg";
 import { useState } from "react";
 import SignUp from "@/components/SignUp.jsx";
+import Login from "@/components/Login.jsx";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [togglelogin, setToggleLogin] = useState(false);
@@ -65,7 +66,7 @@ const Navbar = () => {
           Signup
         </Button>
         {toggle && <SignUp setToggle={setToggle} />}
-        {togglelogin && <SignUp setToggle={setToggleLogin} />}
+        {togglelogin && <Login setToggle={setToggleLogin} />}
       </div>
     </>
   );

@@ -16,15 +16,19 @@ import Community from "../sections/Community";
 import Settings from "../sections/Settings";
 import Home from "../sections/Home/Home";
 import Following from "@/sections/Following";
+import Error from "@/sections/Error";
+import News from "@/sections/News";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path="home" element={<Home />}>
-        <Route path="you" element={<Content />} />
+      <Route path="" element={<Home />}>
+        <Route index element={<Content />} />
         <Route path="following" element={<Following />} />
       </Route>
-      <Route path="/search" element={<Explore />} />
+      <Route path="/search" element={<Explore />}>
+        <Route path="" element={<News />} />
+      </Route>
       <Route path="/notifications" element={<Notifications />} />
       <Route path="/messages" element={<Messages />} />
       <Route path="/bookmarks" element={<Bookmarks />} />
@@ -33,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="/more" element={<More />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path={"*"} element={<Error />} />
     </Route>
   )
 );

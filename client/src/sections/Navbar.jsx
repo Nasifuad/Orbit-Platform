@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { navLinks } from "../constants/constants.jsx";
+import { Button } from "@/components/ui/button";
 import logo from "../assets/images/orbit.svg";
 const Navbar = () => {
   return (
     <>
       <div className="flex flex-col gap-3 h-screen p-4">
-        <NavLink to="/home/you">
+        <NavLink to="/">
           {" "}
           <img
             src={logo}
@@ -43,9 +44,11 @@ const Navbar = () => {
             );
           })}
         </div>
-        <h1 className="text-black text-2xl font-bold bg-gray-200 p-2 rounded-full justify-center  cursor-pointer hover:bg-gray-300 hidden xl:flex">
+        <h1 className="text-black text-xl font-bold bg-gray-200 p-2 rounded-full justify-center  cursor-pointer hover:bg-gray-300 hidden xl:flex">
           Post
         </h1>
+        <Button>Login</Button>
+        <Button>Signup</Button>
       </div>
     </>
   );

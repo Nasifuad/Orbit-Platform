@@ -1,7 +1,9 @@
+import SkeletonUI from "@/components/skeletonUi";
+
 const Following = () => {
   return (
     <div>
-      <h1 className="text-white">Following</h1>
+      <SkeletonUI />
     </div>
   );
 };

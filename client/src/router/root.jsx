@@ -18,6 +18,8 @@ import Home from "../sections/Home/Home";
 import Following from "@/sections/Following";
 import Error from "@/sections/Error";
 import News from "@/sections/News";
+import SignUp from "@/components/SignUp";
+import Login from "@/components/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +39,8 @@ const router = createBrowserRouter(
       <Route path="/more" element={<More />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path={"*"} element={<Error />} />
     </Route>
   )

@@ -1,4 +1,5 @@
 import { comparePassword, hashPassword } from "../encryption/bCrypt.js";
+import { Post } from "../models/postModel.js";
 import { User } from "../models/userModel.js";
 
 export const signup = async (req, res, next) => {
@@ -70,6 +71,21 @@ export const profile = async (req, res, next) => {
   try {
     const users = await User.find();
     res.json(users);
+  } catch (error) {
+    next(error);
+  }
+};
+export const createpost = async (req, res, next) => {
+  try {
+    const post = await Post.create(req.body);
+    res.json(post);
+  } catch (error) {
+    next(error);
+  }
+};
+export const getpost = async (req, res, next) => {
+  try {
+    res.json(await Post.find());
   } catch (error) {
     next(error);
   }

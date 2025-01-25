@@ -7,9 +7,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 const Post = () => {
+  const handlePost = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className=" flex flex-col gap-3 w-full bg-black p-3 border-[#2c2f33] border-[0.5px]">
-      <form action="">
+      <form onSubmit={(e) => handlePost(e)}>
         <div></div>
         <Select className="bg-gray-800 dark:text-white dark:border-gray-600">
           <SelectTrigger className="w-max text-white bg-black border-[0.5px] border-[#2c2f33]">

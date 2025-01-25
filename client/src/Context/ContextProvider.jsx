@@ -7,6 +7,11 @@ export const myContext = createContext();
 const ContextProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [UserInfo, setUserInfo] = useState("gUEST");
+  const setToLocal = (key, value) => {
+    localStorage.setItem(key, value);
+  };
+
+  setToLocal("isLogged", isLogged);
   return (
     <myContext.Provider
       value={{ isLogged, setIsLogged, UserInfo, setUserInfo }}

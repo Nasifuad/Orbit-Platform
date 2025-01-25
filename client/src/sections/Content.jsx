@@ -2,7 +2,6 @@ import Post from "@/components/Post";
 import SkeletonUI from "@/components/skeletonUi";
 import { useQuery } from "@tanstack/react-query";
 import {
-  FaTwitter,
   FaUser,
   FaCalendarAlt,
   FaHeart,

@@ -44,8 +44,8 @@ const SignUp = ({ setToggle }) => {
       });
       const data = await res.json();
       console.log("User created successfully", data);
-      setIsLogged(!isLogged);
-      setUserInfo(data);
+      setUserInfo(data.username);
+      setIsLogged(true);
       navigate("/");
     } catch (error) {
       console.log(error);

@@ -14,10 +14,9 @@ export const signup = async (req, res, next) => {
       res.json({ message: "User already exists" });
     } else {
       const createUser = await User.create(userInfo);
-      res.json({
-        message: "User created successfully",
-        user: createUser,
-        token: createUser.generateAuthToken(),
+      return res.json({
+        message: "Signup successful",
+        username: createUser.username,
       });
       console.log("userInfo", createUser);
     }
@@ -26,19 +25,44 @@ export const signup = async (req, res, next) => {
   }
 };
 
+// export const login = async (req, res, next) => {
+//   try {
+//     const { username, password } = req.body;
+
+//     const user = await User.findOne({ username });
+//     if (user) {
+//       const checkPass = comparePassword(password, user.password);
+//       checkPass && res.json({ message: "Login successful" });
+//       res.json({ user: username });
+//     } else {
+//       res.json({ message: "Invalid username or password" });
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
 export const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
+    // Find the user by username
     const user = await User.findOne({ username });
-    if (user) {
-      const checkPass = comparePassword(password);
-      checkPass && res.json({ message: "Login successful" });
-    } else {
-      res.json({ message: "Invalid username or password" });
+
+    if (!user) {
+      return res.status(401).json({ message: "Invalid username or password" });
     }
+    console.log("user", user);
+    const isPasswordValid = await comparePassword(password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+
+    // If login is successful
+    return res.json({ message: "Login successful", username: user.username });
   } catch (error) {
-    next(error);
+    next(error); // Pass errors to your error-handling middleware
   }
 };
 

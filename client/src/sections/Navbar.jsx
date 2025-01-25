@@ -2,12 +2,15 @@ import { NavLink } from "react-router-dom";
 import { navLinks } from "../constants/constants.jsx";
 import { Button } from "@/components/ui/button";
 import logo from "../assets/images/orbit.svg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { myContext } from "@/Context/ContextProvider.jsx";
 const Navbar = () => {
   const { isLogged, UserInfo } = useContext(myContext);
-  console.log(UserInfo);
+  useEffect(() => {
+    console.log("UserInfo", UserInfo);
+  }, [UserInfo]);
+
   return (
     <>
       <div className="flex flex-col gap-3 h-screen p-4">
@@ -53,7 +56,7 @@ const Navbar = () => {
           Post
         </h1>
         {isLogged ? (
-          <h1 className="text-white text-center">{UserInfo.user.username}</h1>
+          <h1 className="text-white text-center">{UserInfo}</h1>
         ) : (
           <div className="flex gap-4 flex-col">
             <Button value="jeee">

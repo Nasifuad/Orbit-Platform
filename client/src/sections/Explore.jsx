@@ -5,7 +5,18 @@ import { CiSearch } from "react-icons/ci";
 import { CiSettings } from "react-icons/ci";
 import { miniNavSerach } from "@/constants/constants";
 import SkeletonUI from "@/components/skeletonUi";
+import useStore from "@/store/ZusStore";
+import { useEffect } from "react";
 const Explore = () => {
+  // const tasks = useStore((state) => state.tasks);
+  // const addTask = useStore((state) => state.addTask);
+  const { tasks, addTask } = useStore();
+  console.log(addTask, tasks);
+  useEffect(() => {
+    addTask({ id: 3, title: "Task 3", description: "Description 3" });
+    console.log(tasks);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <div className="flex justify-between gap-10 items-center p-4">

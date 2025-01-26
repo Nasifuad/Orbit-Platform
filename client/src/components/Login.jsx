@@ -1,21 +1,20 @@
 import { Button } from "./ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { myContext } from "@/Context/ContextProvider";
-import { useContext } from "react";
+import { useUserStore } from "@/store/ZusStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Login = () => {
+  const queryClient = useQueryClient();
+  const { setUser } = useUserStore();
   const navigate = useNavigate();
-  const { setIsLogged, setUserInfo } = useContext(myContext);
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = (e) => {
     e.preventDefault();
     checkLogin(username, password);
-
-    setError(!error);
   };
   const checkLogin = async (username, password) => {
     try {
@@ -25,12 +24,15 @@ const Login = () => {
         body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
-      console.log("🚀 ~ file: Login.jsx:30 ~ checkLogin ~ data:", data);
+      console.log(data.message);
+
       if (data.message === "Login successful") {
-        setUserInfo(data.username);
-        setIsLogged(true);
+        setUser(data.data);
+        setError(false);
+        queryClient.invalidateQueries(["username"]);
         navigate("/");
       }
+      setError(true);
     } catch (error) {
       console.log(error);
     }

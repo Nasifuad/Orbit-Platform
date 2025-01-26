@@ -1,11 +1,10 @@
 import { RxCross1 } from "react-icons/rx";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { myContext } from "@/Context/ContextProvider";
+import { useState } from "react";
+
 // eslint-disable-next-line react/prop-types
 const SignUp = ({ setToggle }) => {
-  const { isLogged, setIsLogged, setUserInfo } = useContext(myContext);
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -44,8 +43,7 @@ const SignUp = ({ setToggle }) => {
       });
       const data = await res.json();
       console.log("User created successfully", data);
-      setUserInfo(data.username);
-      setIsLogged(true);
+
       navigate("/");
     } catch (error) {
       console.log(error);

@@ -2,15 +2,20 @@ import { NavLink } from "react-router-dom";
 import { navLinks } from "../constants/constants.jsx";
 import { Button } from "@/components/ui/button";
 import logo from "../assets/images/orbit.svg";
-import { useContext, useEffect } from "react";
+import { useUserStore } from "@/store/ZusStore.js";
+// import { useEffect, useState } from "react";
+// import { useState } from "react";
 
-import { myContext } from "@/Context/ContextProvider.jsx";
 const Navbar = () => {
-  const { isLogged, UserInfo } = useContext(myContext);
-  useEffect(() => {
-    console.log("UserInfo", UserInfo);
-  }, [UserInfo]);
+  const { user: username } = useUserStore();
 
+  // useEffect(() => {
+  //   if (user) {
+  //     setUsername(user.username);
+  //   }
+  //   setUsername(localStorage.getItem("username"));
+  // }, []);
+  // console.log(user);
   return (
     <>
       <div className="flex flex-col gap-3 h-screen p-4">
@@ -55,8 +60,11 @@ const Navbar = () => {
         <h1 className="text-black text-xl font-bold bg-gray-200 p-2 rounded-full justify-center  cursor-pointer hover:bg-gray-300 hidden xl:flex">
           Post
         </h1>
-        {isLogged ? (
-          <h1 className="text-white text-center">{UserInfo}</h1>
+
+        {username ? (
+          <h1 className="text-2xl text-center text-white font-bold">
+            {username}
+          </h1>
         ) : (
           <div className="flex gap-4 flex-col">
             <Button value="jeee">
@@ -67,8 +75,6 @@ const Navbar = () => {
             </Button>
           </div>
         )}
-        {/* {toggle && <SignUp setToggle={setToggle} />}
-        {togglelogin && <Login setToggle={setToggleLogin} />} */}
       </div>
     </>
   );

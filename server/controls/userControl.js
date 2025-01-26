@@ -61,7 +61,11 @@ export const login = async (req, res, next) => {
     }
 
     // If login is successful
-    return res.json({ message: "Login successful", username: user.username });
+    return res.json({
+      message: "Login successful",
+      username: user.username,
+      data: user,
+    });
   } catch (error) {
     next(error); // Pass errors to your error-handling middleware
   }

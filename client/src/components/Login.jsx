@@ -3,10 +3,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useUserStore } from "@/store/ZusStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
 
 const Login = () => {
-  const queryClient = useQueryClient();
   const { setUser } = useUserStore();
   const navigate = useNavigate();
   const [error, setError] = useState(false);
@@ -27,9 +25,9 @@ const Login = () => {
       console.log(data.message);
 
       if (data.message === "Login successful") {
-        setUser(data.data);
+        setUser(data.data.username);
         setError(false);
-        queryClient.invalidateQueries(["username"]);
+
         navigate("/");
       }
       setError(true);

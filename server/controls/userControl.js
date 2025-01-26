@@ -5,7 +5,6 @@ import { User } from "../models/userModel.js";
 export const signup = async (req, res, next) => {
   try {
     const userInfo = req.body;
-
     const hashedPass = await hashPassword(userInfo.password);
     userInfo.password = hashedPass;
     console.log("userInfo", userInfo);
@@ -18,6 +17,7 @@ export const signup = async (req, res, next) => {
       return res.json({
         message: "Signup successful",
         username: createUser.username,
+        jwt: await createUser.getAuthToken(),
       });
       console.log("userInfo", createUser);
     }
@@ -65,6 +65,7 @@ export const login = async (req, res, next) => {
       message: "Login successful",
       username: user.username,
       data: user,
+      jwt: await user.getAuthToken(),
     });
   } catch (error) {
     next(error); // Pass errors to your error-handling middleware

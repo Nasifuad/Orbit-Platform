@@ -7,7 +7,7 @@ import { useUserStore } from "@/store/ZusStore.js";
 // import { useState } from "react";
 
 const Navbar = () => {
-  const { user: username } = useUserStore();
+  const { user } = useUserStore();
 
   // useEffect(() => {
   //   if (user) {
@@ -61,10 +61,8 @@ const Navbar = () => {
           Post
         </h1>
 
-        {username ? (
-          <h1 className="text-2xl text-center text-white font-bold">
-            {username}
-          </h1>
+        {user ? (
+          <h1 className="text-2xl text-center text-white font-bold">{user}</h1>
         ) : (
           <div className="flex gap-4 flex-col">
             <Button value="jeee">

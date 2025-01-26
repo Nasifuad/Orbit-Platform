@@ -19,7 +19,15 @@ const userShcema = new Schema({
     required: false,
   },
 });
-userShcema.methods.generateAuthToken = function () {
-  return jwt.sign({ id: this._id }, process.env.SECRET_KEY);
+userShcema.methods.getAuthToken = function () {
+  return jwt.sign(
+    {
+      id: this._id,
+      username: this.username,
+      isAdmin: this.isAdmin,
+      useremail: this.useremail,
+    },
+    process.env.SECRET_KEY
+  );
 };
 export const User = model("User", userShcema);

@@ -1,23 +1,15 @@
 import { create } from "zustand";
 
 const store = (set) => ({
-  tasks: [
-    {
-      id: 1,
-      title: "Task 1",
-      description: "Description 1",
-    },
-    {
-      id: 2,
-      title: "Task 2",
-      description: "Description 2",
-    },
-  ],
-  addTask: (task) => set((state) => ({ tasks: [...state.tasks, task] })),
+  jwt: null,
+  setJwt: (token) =>
+    set(() => {
+      localStorage.setItem("token", token);
+    }),
 });
 const userStore = (set) => ({
   user: null,
-  setUser: (user) => set({ user: user.usernmae }),
+  setUser: (username) => set(() => ({ user: username })),
 });
 
 const useStore = create(store);

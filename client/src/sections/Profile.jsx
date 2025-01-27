@@ -3,9 +3,10 @@ import cover from "../assets/images/cover.jpeg";
 import { MdVerified } from "react-icons/md";
 import { miniNavProfile } from "@/constants/constants";
 import MiniNav from "@/components/MiniNav";
-import { useUserStore } from "@/store/ZusStore";
+import { useStore } from "@/store/ZusStore";
+
 const Profile = () => {
-  const { user } = useUserStore();
+  const { user } = useStore();
   console.log("User from Profile", user);
   return (
     <>

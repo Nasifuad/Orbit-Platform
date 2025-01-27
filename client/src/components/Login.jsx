@@ -1,11 +1,11 @@
 import { Button } from "./ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useUserStore } from "@/store/ZusStore";
+import { useStore } from "@/store/ZusStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { setUser } = useUserStore();
+  const { setJwt } = useStore();
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
@@ -25,7 +25,7 @@ const Login = () => {
       console.log(data.message);
 
       if (data.message === "Login successful") {
-        setUser(data.data.username);
+        setJwt(data.jwt);
         setError(false);
 
         navigate("/");

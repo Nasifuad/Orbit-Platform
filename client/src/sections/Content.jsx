@@ -1,5 +1,6 @@
+import Ham from "@/components/CustomLoader/Ham";
 import Post from "@/components/Post";
-import SkeletonUI from "@/components/skeletonUi";
+// import SkeletonUI from "@/components/skeletonUi";
 import { useQuery } from "@tanstack/react-query";
 import {
   FaUser,
@@ -10,7 +11,7 @@ import {
 } from "react-icons/fa";
 const Content = () => {
   const getPosts = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const res = await fetch("http://localhost:5050/api/getpost");
     if (!res.ok) throw new Error("Failed to fetch posts");
     return res.json();
@@ -28,7 +29,8 @@ const Content = () => {
   return (
     <>
       <Post />
-      {isLoading && <SkeletonUI />}
+      {/* {isLoading && <SkeletonUI />} */}
+      {isLoading && <Ham />}
       <div className="text-white border-[#2c2f33] border-[0.5px] p-5 flex flex-col gap-2">
         {data?.map((post) => (
           <div

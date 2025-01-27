@@ -1,9 +1,12 @@
 // import { NavLink } from "react-router-dom";
+import DarkLight from "@/components/DarkLight/DarkLight";
+
 import { CiSearch } from "react-icons/ci";
 const Aside = () => {
   return (
     <>
-      <div className="xl:flex flex-col gap-3 ml-auto hidden  p-2">
+      <div className="flex-col ml-auto hidden xl:flex   p-2 -center items-center mt-[50px] gap-10">
+        <DarkLight />
         <form>
           <div className=" border-[#2c2f33] border-[0.5px] rounded-full flex  xl:w-full relative">
             <CiSearch className="ml-2 text-3xl text-white z-20 absolute top-2 right-2" />

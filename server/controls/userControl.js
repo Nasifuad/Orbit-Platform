@@ -7,7 +7,6 @@ export const signup = async (req, res, next) => {
     const userInfo = req.body;
     const hashedPass = await hashPassword(userInfo.password);
     userInfo.password = hashedPass;
-    console.log("userInfo", userInfo);
     const checkExists = await User.findOne({ useremail: userInfo.useremail });
 
     if (checkExists) {
@@ -16,10 +15,8 @@ export const signup = async (req, res, next) => {
       const createUser = await User.create(userInfo);
       return res.json({
         message: "Signup successful",
-        username: createUser.username,
         jwt: await createUser.getAuthToken(),
       });
-      console.log("userInfo", createUser);
     }
   } catch (error) {
     next(error);
@@ -63,8 +60,7 @@ export const login = async (req, res, next) => {
     // If login is successful
     return res.json({
       message: "Login successful",
-      username: user.username,
-      data: user,
+
       jwt: await user.getAuthToken(),
     });
   } catch (error) {
@@ -74,8 +70,9 @@ export const login = async (req, res, next) => {
 
 export const profile = async (req, res, next) => {
   try {
-    const users = await User.find();
-    res.json(users);
+    const user = req.user;
+    // const users = await User.find();
+    res.json(user);
   } catch (error) {
     next(error);
   }

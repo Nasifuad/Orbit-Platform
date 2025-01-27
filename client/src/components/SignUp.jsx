@@ -2,9 +2,11 @@ import { RxCross1 } from "react-icons/rx";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useStore } from "@/store/ZusStore";
 
 // eslint-disable-next-line react/prop-types
 const SignUp = ({ setToggle }) => {
+  const { setJwt } = useStore();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,15 +28,13 @@ const SignUp = ({ setToggle }) => {
 
     const UserInfo = { username: name, useremail: email, password: password };
     postToServer(UserInfo);
-    // const res = await postToServer(UserInfo);
-    // res && navigate("/login");
+
     setName("");
     setEmail("");
     setPassword("");
     setConfirmPass("");
   };
   const postToServer = async (UserInfo) => {
-    console.log(UserInfo);
     try {
       const res = await fetch("http://localhost:5050/api/signup", {
         method: "POST",
@@ -42,9 +42,13 @@ const SignUp = ({ setToggle }) => {
         body: JSON.stringify(UserInfo),
       });
       const data = await res.json();
-      console.log("User created successfully", data);
-
-      navigate("/");
+      if (data.message === "User already exists") {
+        alert("User already exists");
+      }
+      if (data.message === "Signup successful") {
+        setJwt(data.jwt);
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }

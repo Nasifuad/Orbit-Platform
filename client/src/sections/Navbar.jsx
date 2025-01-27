@@ -2,12 +2,13 @@ import { NavLink } from "react-router-dom";
 import { navLinks } from "../constants/constants.jsx";
 import { Button } from "@/components/ui/button";
 import logo from "../assets/images/orbit.svg";
-import { useUserStore } from "@/store/ZusStore.js";
+import { useStore } from "@/store/ZusStore.js";
+import DarkLight from "@/components/DarkLight/DarkLight.jsx";
 // import { useEffect, useState } from "react";
 // import { useState } from "react";
 
 const Navbar = () => {
-  const { user } = useUserStore();
+  const { user } = useStore();
 
   // useEffect(() => {
   //   if (user) {
@@ -27,6 +28,10 @@ const Navbar = () => {
             className="xl:w-[100px] xl:h-[100px] w-20 h-20 sm:mx-auto justify-start xl:mx-1"
           />
         </NavLink>
+
+        <div className="flex justify-start items-center xl:hidden ">
+          <DarkLight />
+        </div>
         <div className="flex flex-col gap-4">
           {navLinks.map((link, index) => {
             const { to, name, icon } = link;

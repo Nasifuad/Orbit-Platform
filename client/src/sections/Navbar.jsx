@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import logo from "../assets/images/orbit.svg";
 import { useStore } from "@/store/ZusStore.js";
 import DarkLight from "@/components/DarkLight/DarkLight.jsx";
+import { useFetchUser } from "@/store/ZusStore";
+
 // import { useEffect, useState } from "react";
 // import { useState } from "react";
 
 const Navbar = () => {
-  const { user } = useStore();
-
+  const { user, logout } = useStore();
+  useFetchUser();
   // useEffect(() => {
   //   if (user) {
   //     setUsername(user.username);
@@ -67,7 +69,18 @@ const Navbar = () => {
         </h1>
 
         {user ? (
-          <h1 className="text-2xl text-center text-white font-bold">{user}</h1>
+          <>
+            <h1 className="text-2xl text-center text-white font-bold">
+              {user}
+            </h1>
+            <NavLink
+              className="text-xl text-center text-white font-bold bg-red-600 p-2 rounded-full  hover:bg-red-700"
+              to="/"
+              onClick={() => logout()}
+            >
+              LogOut
+            </NavLink>
+          </>
         ) : (
           <div className="flex gap-4 flex-col">
             <Button value="jeee">

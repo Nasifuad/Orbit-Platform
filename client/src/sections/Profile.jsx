@@ -3,11 +3,31 @@ import cover from "../assets/images/cover.jpeg";
 import { MdVerified } from "react-icons/md";
 import { miniNavProfile } from "@/constants/constants";
 import MiniNav from "@/components/MiniNav";
-import { useStore } from "@/store/ZusStore";
+import { useFetchUser, useStore } from "@/store/ZusStore";
+
+// import { useQuery } from "@tanstack/react-query";
 
 const Profile = () => {
   const { user } = useStore();
+  // const { data } = useQuery({
+  //   queryKey: ["user"],
+  //   queryFn: async () => {
+  //     const token = localStorage.getItem("token");
+  //     const res = await fetch("http://localhost:5050/api/profile", {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: token,
+  //       },
+  //     });
+  //     const data = await res.json();
+  //     return data; // Update the user state in the store
+  //   },
+  // });
+  // console.log("User from Profile", data);
+  const fetch = useFetchUser();
+  console.log("User from Profile", fetch);
   console.log("User from Profile", user);
+
   return (
     <>
       <div className="relative border p-4">

@@ -1,17 +1,23 @@
+// import { useQuery } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
 import { create } from "zustand";
 
 // Consolidated Zustand store
-const useStore = create((set) => ({
+
+export const useStore = create((set) => ({
   user: null,
   setJwt: (token) => {
     localStorage.setItem("token", token);
   },
   setUser: (username) => set({ user: username }),
-  logout: () => set({ user: null }),
+  logout: () => {
+    localStorage.removeItem("token");
+    set({ user: null });
+  },
+  isLoggedIn: () => !!localStorage.getItem("token"),
 }));
 
-const useFetchUser = () => {
+export const useFetchUser = () => {
   const setUser = useStore((state) => state.setUser);
 
   useQuery({
@@ -24,10 +30,17 @@ const useFetchUser = () => {
           Authorization: token,
         },
       });
-      const data = await res.json();
-      setUser(data.username); // Update the user state in the store
+      if (!res.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+      console.log(res.json());
+      return res.json();
+    },
+    onSuccess: (data) => {
+      setUser(data.username);
+    },
+    onError: (error) => {
+      console.error("Error fetching user data:", error);
     },
   });
 };
-
-export { useStore, useFetchUser };

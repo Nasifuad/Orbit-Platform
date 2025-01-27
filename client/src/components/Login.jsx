@@ -3,7 +3,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useStore } from "@/store/ZusStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 const Login = () => {
   const { setJwt } = useStore();
   const navigate = useNavigate();
@@ -35,6 +34,7 @@ const Login = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="bg-black shadow-gray-800 shadow rounded-2xl  w-[400px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 relative z-50 p-10 flex flex-col gap-6 ">
       <h1 className="text-white text-4xl text-center font-bold">Login</h1>

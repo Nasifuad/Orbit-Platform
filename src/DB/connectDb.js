@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const URI =
   process.env.MONGO_URI ||
   "mongodb+srv://nasifuad007:nasif123@orbit.50q2t.mongodb.net/Orbit?";
-console.log(process.env.MONGO_URI);
 
 const connectDb = async () => {
   try {

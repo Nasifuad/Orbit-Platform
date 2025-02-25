@@ -1,4 +1,6 @@
 import express from "express";
+import { upload } from "../Middlewares/multer.middleware.js";
+import { authMiddleware } from "../Middlewares/auth.middleware.js";
 import {
   getUser,
   homePage,
@@ -9,7 +11,16 @@ const router = express.Router();
 
 router.route("/").get(homePage);
 router.route("/login").post(login);
-router.route("/register").post(register);
-router.route("/users").get(getUser);
+router.route("/register").post(
+  upload.fields([
+    {
+      name: "avatar",
+      maxCount: 1,
+    },
+    { name: "cover", maxCount: 1 },
+  ]),
+  register
+);
+router.route("/user").get(authMiddleware, getUser);
 
 export { router };

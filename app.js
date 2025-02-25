@@ -4,6 +4,7 @@ import { router } from "./src/Routes/auth.route.js";
 import cors from "cors";
 const app = express();
 //damn middle wares
+
 app.use(cookieParser());
 app.use(
   cors({
@@ -18,6 +19,6 @@ app.use(
   })
 );
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
 app.use("/api/v1/user", router);
+
 export { app };

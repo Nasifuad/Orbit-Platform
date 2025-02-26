@@ -97,5 +97,13 @@ const getUser = async (req, res) => {
   console.log(user);
   res.json(user);
 };
-
-export { homePage, login, register, getUser };
+const checkUser = async (req, res) => {
+  const { user } = req.user;
+  console.log(user);
+  res.json({
+    message: "User been logged",
+    user,
+    status: true,
+  });
+};
+export { homePage, login, register, getUser, checkUser };
